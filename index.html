@@ -43,6 +43,33 @@
   "description": "Mobile notary public serving Los Angeles. We travel to your home, office, hospital, or any location for acknowledgments, jurats, loan signings, and more."
 }
 </script>
+<style>
+.lang-dropdown{position:relative;z-index:60}
+.lang-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.85rem;font-weight:600;padding:12px 18px;min-height:44px;border-radius:999px;cursor:pointer;white-space:nowrap;font-family:inherit}
+.lang-btn:hover{background:rgba(255,255,255,.22)}
+.lang-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#0b1930;border:1px solid rgba(255,255,255,.15);border-radius:12px;min-width:170px;box-shadow:0 12px 40px rgba(0,0,0,.45);overflow:hidden;z-index:61}
+.lang-menu.open{display:block}
+.lang-menu a{display:block;color:#f0eaf8;text-decoration:none;padding:10px 18px;font-size:.9rem}
+.lang-menu a:hover{background:rgba(255,255,255,.08);color:#fbbf24}
+.lang-menu a[aria-current="true"]{color:#fbbf24;font-weight:700}
+[dir="rtl"] .lang-menu{left:0;right:auto}
+@media(max-width:760px){.lang-btn{padding:7px 12px;font-size:.8rem}.lang-menu{min-width:150px}}
+
+/* Swoosh underline on nav links (bulk pass) */
+.cine-links a{position:relative}
+.cine-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:linear-gradient(90deg,#f59e0b,transparent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.cine-links a:hover::after{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.cine-links a::after{display:none}}
+@media(max-width:900px){.cine-links a::after{display:none}}
+
+@media(max-width:560px){
+.cine-title{font-size:clamp(2.2rem,11vw,3rem)!important;line-height:1.08}
+.cine-sub{font-size:1.05rem!important}
+.cine-actions{flex-direction:column;align-items:stretch}
+.cine-actions a{width:100%;text-align:center;box-sizing:border-box}
+.cine-titles{padding:32px 20px}
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -64,6 +91,20 @@
       <a href="/faq.html">FAQ</a>
       <a href="/contact.html">Contact</a>
       <a href="/contact.html" class="cine-cta nav-cta-desktop">Book Appointment</a>
+    </div>
+    <div class="lang-dropdown">
+      <button class="lang-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐 EN ▾</button>
+      <div class="lang-menu" role="menu">
+        <a role="menuitem" href="/" aria-current="true">English</a>
+        <a role="menuitem" href="#" data-gt="es">Español</a>
+        <a role="menuitem" href="#" data-gt="zh-CN">中文</a>
+        <a role="menuitem" href="#" data-gt="vi">Tiếng Việt</a>
+        <a role="menuitem" href="#" data-gt="ko">한국어</a>
+        <a role="menuitem" href="#" data-gt="tl">Tagalog</a>
+        <a role="menuitem" href="#" data-gt="hy">Հայերեն</a>
+        <a role="menuitem" href="#" data-gt="fa">فارسی</a>
+        <a role="menuitem" href="#" data-gt="ar">العربية</a>
+      </div>
     </div>
   </nav>
   <div class="cine-titles">
@@ -103,7 +144,7 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="section" id="how">
+<section class="section reveal" id="how">
   <div class="wrap">
     <p class="eyebrow">✦ Simple process</p>
     <h2>Three Steps. <span class="gold" style="color:var(--gold-d)">Zero Hassle.</span></h2>
@@ -148,7 +189,7 @@
 </section>
 
 <!-- SERVICE AREA -->
-<section class="section" id="area">
+<section class="section reveal" id="area">
   <div class="wrap narrow" style="text-align:center">
     <p class="eyebrow">✦ Service area</p>
     <h2>Serving <span class="gold" style="color:var(--gold-d)">Los Angeles</span></h2>
@@ -173,7 +214,7 @@
 </section>
 
 <!-- FAQ TEASER -->
-<section class="section" id="faq">
+<section class="section reveal" id="faq">
   <div class="wrap narrow">
     <p class="eyebrow">✦ Quick answers</p>
     <h2>Common <span class="gold" style="color:var(--gold-d)">Questions</span></h2>
@@ -238,6 +279,9 @@
 (function(){var t=document.querySelector('.nav-toggle'),l=document.querySelector('.cine-links');if(!t||!l)return;t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o)});})();
 // Scroll reveal
 (function(){var els=document.querySelectorAll('.section');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('visible')});return}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.1});els.forEach(function(e){io.observe(e)})})();
+</script>
+<script>
+(function(){var b=document.querySelector('.lang-btn'),m=document.querySelector('.lang-menu');if(!b||!m)return;b.addEventListener('click',function(e){e.stopPropagation();var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')});document.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false')});document.addEventListener('keydown',function(e){if(e.key==='Escape'){m.classList.remove('open');b.setAttribute('aria-expanded','false')}});m.querySelectorAll('a[data-gt]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var tl=a.getAttribute('data-gt');window.location.href='https://translate.google.com/translate?sl=en&tl='+tl+'&u='+encodeURIComponent(window.location.href)})})})();
 </script>
 </body>
 </html>

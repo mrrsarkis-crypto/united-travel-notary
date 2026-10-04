@@ -26,12 +26,26 @@
     <a href="/about.html">About</a>
     <a href="/faq.html">FAQ</a>
     <a href="/contact.html">Contact</a>
+        <div class="lang-dropdown">
+      <button class="lang-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐 EN ▾</button>
+      <div class="lang-menu" role="menu">
+        <a role="menuitem" href="/" aria-current="true">English</a>
+        <a role="menuitem" href="#" data-gt="es">Español</a>
+        <a role="menuitem" href="#" data-gt="zh-CN">中文</a>
+        <a role="menuitem" href="#" data-gt="vi">Tiếng Việt</a>
+        <a role="menuitem" href="#" data-gt="ko">한국어</a>
+        <a role="menuitem" href="#" data-gt="tl">Tagalog</a>
+        <a role="menuitem" href="#" data-gt="hy">Հայերեն</a>
+        <a role="menuitem" href="#" data-gt="fa">فارسی</a>
+        <a role="menuitem" href="#" data-gt="ar">العربية</a>
+      </div>
+    </div>
     <a href="/contact.html" class="cine-cta nav-cta-desktop">Book Appointment</a>
   </div>
 </nav>
 <header class="page-hero"><div class="wrap"><h1>Privacy <span class="gold">Policy</span></h1><p>Last updated: October 2026</p></div></header>
 <main id="main">
-<section class="section"><div class="wrap narrow"><div class="prose">
+<section class="section reveal"><div class="wrap narrow"><div class="prose reveal">
 <h2>Information we collect</h2>
 <p>When you request an appointment, we collect your name, phone number, email address, service location, and details about the notarization you need. This information is used solely to schedule and perform your appointment.</p>
 <h2>Notary journal records</h2>
@@ -64,5 +78,39 @@
   <div class="wrap"><p class="footer-legal">United Travel Notary is a California notary public service. A notary public is not an attorney and may not give legal advice.</p><p class="copy">© 2026 United Travel Notary. All rights reserved.</p></div>
 </footer>
 <script>(function(){var t=document.querySelector('.nav-toggle'),l=document.querySelector('.cine-links');if(t&&l)t.addEventListener('click',function(){l.classList.toggle('open')});})();</script>
+<style>
+.lang-dropdown{position:relative;z-index:60}
+.lang-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.85rem;font-weight:600;padding:12px 18px;min-height:44px;border-radius:999px;cursor:pointer;white-space:nowrap;font-family:inherit}
+.lang-btn:hover{background:rgba(255,255,255,.22)}
+.lang-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#0b1930;border:1px solid rgba(255,255,255,.15);border-radius:12px;min-width:170px;box-shadow:0 12px 40px rgba(0,0,0,.45);overflow:hidden;z-index:61}
+.lang-menu.open{display:block}
+.lang-menu a{display:block;color:#f0eaf8;text-decoration:none;padding:10px 18px;font-size:.9rem}
+.lang-menu a:hover{background:rgba(255,255,255,.08);color:#fbbf24}
+.lang-menu a[aria-current="true"]{color:#fbbf24;font-weight:700}
+[dir="rtl"] .lang-menu{left:0;right:auto}
+@media(max-width:760px){.lang-btn{padding:7px 12px;font-size:.8rem}.lang-menu{min-width:150px}}
+
+/* Swoosh underline on nav links (bulk pass) */
+.cine-links a{position:relative}
+.cine-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:linear-gradient(90deg,#f59e0b,transparent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.cine-links a:hover::after{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.cine-links a::after{display:none}}
+@media(max-width:900px){.cine-links a::after{display:none}}
+
+@media(max-width:560px){
+.cine-title{font-size:clamp(2.2rem,11vw,3rem)!important;line-height:1.08}
+.cine-sub{font-size:1.05rem!important}
+.cine-actions{flex-direction:column;align-items:stretch}
+.cine-actions a{width:100%;text-align:center;box-sizing:border-box}
+.cine-titles{padding:32px 20px}
+}
+</style>
+<script>
+(function(){var b=document.querySelector('.lang-btn'),m=document.querySelector('.lang-menu');if(!b||!m)return;b.addEventListener('click',function(e){e.stopPropagation();var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')});document.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false')});document.addEventListener('keydown',function(e){if(e.key==='Escape'){m.classList.remove('open');b.setAttribute('aria-expanded','false')}});m.querySelectorAll('a[data-gt]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var tl=a.getAttribute('data-gt');window.location.href='https://translate.google.com/translate?sl=en&tl='+tl+'&u='+encodeURIComponent(window.location.href)})})})();
+</script>
+<script>
+/* Scroll reveal */
+(function(){var r=document.querySelectorAll('.reveal');if(!r.length)return;if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:.12});r.forEach(function(el){io.observe(el)})}else{r.forEach(function(el){el.classList.add('visible')})}})();
+</script>
 </body>
 </html>
