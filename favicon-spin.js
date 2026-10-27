@@ -1,9 +1,9 @@
 // Spinning favicon: rotates this site's own logo on a canvas.
 // The artwork is clipped to a circle so the rim stays put while the logo
 // turns inside it. Pauses while the tab is hidden.
-// The logo ships as favicon.svg (an SVG wrapping the brand's 192px PNG,
-// used because this site's Pages project is Git-connected and binary
-// uploads are not possible through the repo tooling).
+// The spin loads the real PNG at /favicon-192.png: an SVG-wrapped image
+// (favicon.svg) does not draw to canvas reliably in several browsers,
+// which silently stopped the spin.
 (function () {
   if (window.__faviconSpin) return;
   window.__faviconSpin = 1;
@@ -35,5 +35,5 @@
     });
     if (!document.hidden) start();
   };
-  img.src = '/favicon.svg';
+  img.src = '/favicon-192.png';
 })();
